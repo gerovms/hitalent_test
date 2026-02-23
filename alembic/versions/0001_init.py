@@ -24,7 +24,7 @@ def upgrade() -> None:
         sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("now()"), nullable=False),
     )
     op.create_index("ix_departments_parent_id", "departments", ["parent_id"])
-    # Уникальность имени в пределах parent, включая parent_id IS NULL:
+
     op.create_index(
         "uq_departments_parent_name",
         "departments",
